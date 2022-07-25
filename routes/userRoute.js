@@ -7,11 +7,11 @@ router.post('/login', async (req, res) => {
     console.log("Login");
     try {
         await UserModel.findOne({ userId: req.body.userId, password: req.body.password });
-        // if (user) {
+        if (user) {
         res.send('Login Successfull');
-        // } else {
-        //     res.status(400).json({ message: 'Login failed' });
-        // }
+        } else {
+             res.status(400).json({ message: 'Login failed' });
+        }
     } catch (error) {
         res.status(400).json(error);
     }
